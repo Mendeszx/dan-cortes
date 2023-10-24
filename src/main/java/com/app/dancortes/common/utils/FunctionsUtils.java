@@ -1,5 +1,8 @@
 package com.app.dancortes.common.utils;
 
+import com.app.dancortes.DanCortesApplication;
+import org.springframework.boot.SpringApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Time;
@@ -30,5 +33,12 @@ public class FunctionsUtils {
         Time horaTime = new Time(data.getTime());
 
         return horaTime;
+    }
+
+    //gerar senha criptgrafada
+    public static void main(String[] args) {
+        String senha = new BCryptPasswordEncoder().encode("admin");
+        System.out.println(senha);
+
     }
 }

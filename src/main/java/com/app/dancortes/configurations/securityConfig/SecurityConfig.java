@@ -37,7 +37,7 @@ public class SecurityConfig {
                         .hasAnyRole("USUARIO_EMPRESA", "ADMIN")
                         .requestMatchers(HttpMethod.POST,"/api/v1/cadastro/servico-funcionario")
                         .hasAnyRole("USUARIO_EMPRESA", "ADMIN")
-                        .requestMatchers(HttpMethod.GET,"/api/v1/cadastro/cabeleireiro")
+                        .requestMatchers(HttpMethod.POST,"/api/v1/cadastro/cabeleireiro")
                         .hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET,"/api/v1/health/check")
                         .hasRole("ADMIN")
