@@ -44,7 +44,6 @@ public class UsuariosEntity extends CommonEntitiesColumns implements UserDetails
     @Column(nullable = false, name = "data_de_nascimento")
     private LocalDate dataDeNascimento;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "sexo")
     private String sexo;
 
