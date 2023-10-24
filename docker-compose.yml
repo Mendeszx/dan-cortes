@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  # Aplicação Spring Boot
+  spring-app:
+    image: hair_pass:latest
+    ports:
+      - "8080:8080" # Mapeia a porta do contêiner para a porta do host
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hair_pass
+      SPRING_DATASOURCE_USERNAME: hair_pass
+      SPRING_DATASOURCE_PASSWORD: hair_pass
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  # Banco de Dados PostgreSQL
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: hair_pass
+      POSTGRES_USER: hair_pass
+      POSTGRES_PASSWORD: hair_pass
+    ports:
+      - "5432:5432" # Mapeia a porta do contêiner para a porta do host
+
+  # Instância RabbitMQ
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "15672:15672" # Porta para o painel de controle da web
+      - "5672:5672"   # Porta de comunicação AMQP
+    environment:
+      RABBITMQ_DEFAULT_USER: hair_pass_rabbit
+      RABBITMQ_DEFAULT_PASS: hair_pass_rabbit
